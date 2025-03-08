@@ -21,8 +21,9 @@ function calculateBMI(weight, height) {
         console.log("Height or weight parameter must not be less or equal than 0");
         return 0;
     }
-    else
+    else {
         return Math.round(weight / (height ** 2) * 100) / 100;
+    }
 }
 
 /*
@@ -58,10 +59,10 @@ console.log("The amount of " + money + "$ = " + res + " VND");
 
 // d. Calculate Time (hours:minutes:seconds)
 function calculateTime(time) {
-    let h = ~~(time / 3600);
-    let m = ~~((time % 3600) / 60);
-    let s = time % 60;
-    return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    let hour = ~~(time / 3600);
+    let minute = ~~((time % 3600) / 60);
+    let second = time % 60;
+    return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:${String(second).padStart(2, '0')}`;
 }
 
 /*

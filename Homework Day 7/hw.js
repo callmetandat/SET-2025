@@ -59,14 +59,22 @@ console.log("The amount of " + money + "$ = " + res + " VND");
 
 // d. Calculate Time (hours:minutes:seconds)
 function calculateTime(time) {
-    let hour = ~~(time / 3600);
-    let minute = ~~((time % 3600) / 60);
-    let second = time % 60;
-    return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:${String(second).padStart(2, '0')}`;
+    if(time >= 0) {
+        const hour = ~~(time / 3600);
+        const minute = ~~((time % 3600) / 60);
+        const second = time % 60;
+        // In the case hour >=100, the result will still display xxx:xx:xx and I would not consider this!
+        return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:${String(second).padStart(2, '0')}`;
+    }
+    else {
+        return "Time must not be less then zero!";
+    }
 }
 
 /*
-let time = 3601;
+let time = 120;
 let res = calculateTime(time);
 console.log("The time is: " + res);
 */
+
+

@@ -2,7 +2,7 @@
     background-color: #ffffff; /* Màu nền */
     padding: 10px 20px;
     display: flex;
-    justify-content: justify; /* Căn 2 bên */
+    justify-content: center; /* Căn 2 bên */
     align-items: center;
 }
 
@@ -48,5 +48,84 @@
     width: 300px;
 }
 
+.menu__footer {
+    display: flex;
+    justify-content: center;
+}
 
+.menu__footer li{
+    list-style: none;
+    margin-left: 70px;
+}
+
+.menu__tutorials li{
+    list-style: none;
+    justify-content: center;
+}
+.menu__references li{
+    list-style: none;
+    justify-content: center;
+}
+
+.menu__examples li{
+    list-style: none;
+    justify-content: center;
+}
+
+.menu__certifications li{
+    list-style: none;
+    justify-content: center;
+}
+
+.menu__tutorials {
+    margin-left: 100px;
+}
+
+.menu__references {
+    margin-left: 100px;
+}
+
+.menu__examples {
+    margin-left: 100px;
+}
+
+.menu__certifications {
+    margin-left: 100px;
+}
+
+.navbar__footer {
+    background-color: #ffffff; /* Màu nền */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center; /* Căn 2 bên */
+    align-items: center;
+}
+
+.hero {
+    justify-content: center;
+    justify-items: center;
+}
+
+.HTML {
+    justify-content: center;
+    justify-items: center;
     
+}
+
+.CSS {
+    justify-content: center;
+    justify-items: center;
+    
+}
+
+.JavaScript {
+    justify-content: center;
+    justify-items: center;
+}
+
+
+
+footer {
+    margin-top: 100px;
+}
+

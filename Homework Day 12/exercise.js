@@ -13,27 +13,27 @@ console.log(result);
 */
 
 function printSnailMatrix(matrix) {
-    const rowStart = 0, rowEnd = matrix.length - 1, columnStart = 0, columnEnd =  matrix[0].length - 1;
+    let rowStart = 0, rowEnd = matrix.length - 1, columnStart = 0, columnEnd =  matrix[0].length - 1;
     let result = [];
     while(rowStart <= rowEnd && columnStart <= columnEnd) {
         for(let i = columnStart; i <= columnEnd; i++) {
-            let tmpRight = matrix[rowStart][i];
-            result.push(tmpRight)
+            let temporaryRight = matrix[rowStart][i];
+            result.push(temporaryRight)
         }
         rowStart++;
         for(let i = rowStart; i <= rowEnd; i++) {
-            let tmpDown = matrix[i][columnEnd]
-            result.push(tmpDown)
+            let temporaryDown = matrix[i][columnEnd]
+            result.push(temporaryDown)
         }
         columnEnd--;
         for(let i = columnEnd; i >= columnStart; i--) {
-            let tmpLeft = matrix[rowEnd][i]
-            result.push(tmpLeft)
+            let temporaryLeft = matrix[rowEnd][i]
+            result.push(temporaryLeft)
         }
         rowEnd--;
         for(let i = rowEnd; i >= rowStart; i--) {
-            let tmpUp = matrix[i][columnStart]
-            result.push(tmpUp)
+            let temporaryUp = matrix[i][columnStart]
+            result.push(temporaryUp)
         }
         columnStart++;
     }
@@ -45,7 +45,7 @@ const array = printSnailMatrix(matrix);
 console.log(array);
 
 function checkSquareNumber(number) {
-    const child = ~~(Math.sqrt(number));
+    let child = ~~(Math.sqrt(number));
     return (child ** 2 == number);
 }
 

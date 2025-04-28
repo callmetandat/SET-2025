@@ -1,16 +1,42 @@
 body{
     font-family: sans-serif;
-    margin-left: 40px;
     margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+    text-align: justify ;
+    line-height: 1.5;
+}
+
+hr{
+    color: #004081;
+    border: 1px solid;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.main__content-line--header{
+    border: 2px solid;
+    margin-top: 10px;
 }
 
 h1{
     margin: 0;
     color: #004081;
-    font-weight: ;
+    font-weight: bolder;
 }
 
 h2{
+    margin: 0;
+    color: #004081;
+}
+
+h4{
+    margin: 0;
+    margin-right: 50px;
+    color: #004081;
+}
+
+h5{
     margin: 0;
     color: #004081;
 }
@@ -20,3 +46,65 @@ h2{
     align-content: space-between;
     justify-content: space-between;
 }
+
+.main__content-summary{
+    display: flex;
+    align-items: flex-start;
+}
+
+.main__content-projects{
+    display: flex;
+    align-items: flex-start;
+}
+
+.main__project--U-Net{
+    display: flex;
+    flex-direction: column;
+}
+
+.main__project-information{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.main__content-education{
+    display: flex;
+    align-items: flex-start;
+}
+
+.main__education-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.main__education-container ul{
+    margin-top: 0px;
+}
+
+.main__education-information{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.main__content-skills{
+    display: flex;
+    align-items: flex-start;
+}
+
+.main__skills-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.main__skills-category{
+    text-align: center;
+}
+
+
+
+

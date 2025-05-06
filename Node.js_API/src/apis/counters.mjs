@@ -1,4 +1,4 @@
-import { readJSON, writeJSON } from "./ultilities.mjs";
+import { readJSON, writeJSON } from "../utils/index.mjs";
 
 let count = 0;
 

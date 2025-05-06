@@ -1,0 +1,96 @@
+{
+  "history": [
+    {
+      "endpoint": "/count",
+      "input": "",
+      "output": {
+        "totalCalls": 9
+      }
+    },
+    {
+      "endpoint": "/sum",
+      "input": {
+        "number1": 100,
+        "number2": 50
+      },
+      "output": {
+        "sum": 150
+      }
+    },
+    {
+      "endpoint": "/sum",
+      "input": {
+        "number1": 100,
+        "number2": 50
+      },
+      "output": {
+        "sum": 150
+      }
+    },
+    {
+      "endpoint": "/sum",
+      "input": {
+        "number1": 100,
+        "number2": 50
+      },
+      "output": {
+        "sum": 150
+      }
+    },
+    {
+      "endpoint": "/current-time",
+      "input": "",
+      "output": {
+        "currentTime": "2025-05-06T06:38:20.059Z"
+      }
+    },
+    {
+      "endpoint": "/count",
+      "input": "",
+      "output": {
+        "totalCalls": 5
+      }
+    },
+    {
+      "endpoint": "/sum",
+      "input": {
+        "number1": 100,
+        "number2": 50
+      },
+      "output": {
+        "sum": 150
+      }
+    },
+    {
+      "endpoint": "/count",
+      "input": "",
+      "output": {
+        "totalCalls": 4
+      }
+    },
+    {
+      "endpoint": "/count",
+      "input": "",
+      "output": {
+        "totalCalls": 4
+      }
+    },
+    {
+      "endpoint": "/sum",
+      "input": {
+        "num1": 100,
+        "num2": 50
+      },
+      "output": {
+        "sum": 150
+      }
+    },
+    {
+      "endpoint": "/current-time",
+      "input": "",
+      "output": {
+        "currentTime": "2025-04-29T20:08:51.384Z"
+      }
+    }
+  ]
+}

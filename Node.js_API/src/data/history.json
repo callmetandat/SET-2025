@@ -1,6 +1,37 @@
 {
   "history": [
     {
+      "endpoint": "/current-time",
+      "input": "",
+      "output": {
+        "currentTime": "2025-05-20T17:14:35.454Z"
+      }
+    },
+    {
+      "endpoint": "/current-time",
+      "input": "",
+      "output": {
+        "currentTime": "2025-05-20T17:14:21.935Z"
+      }
+    },
+    {
+      "endpoint": "/sum",
+      "input": {
+        "number1": 100,
+        "number2": 500
+      },
+      "output": {
+        "sum": 600
+      }
+    },
+    {
+      "endpoint": "/count",
+      "input": "",
+      "output": {
+        "totalCalls": 9
+      }
+    },
+    {
       "endpoint": "/count",
       "input": "",
       "output": {

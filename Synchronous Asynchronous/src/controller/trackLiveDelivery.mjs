@@ -3,7 +3,7 @@ export async function trackLiveDelivery(){
     while (minutes >= 0) {
         console.log(minutes);
         await new Promise(resolve => {
-            let myInterval = setInterval(() => {
+            let myInterval = setTimeout(() => {
                 console.log(`${minutes} minutes left!`);
                 resolve();
             }, 1000);
@@ -21,7 +21,7 @@ export async function trackLiveDeliveryd(){
     let myInterval = setInterval(() => {     
         console.log(`${minutes} minutes left!`);
         minutes--;
-        if (minutes === 0) {
+        while (minutes < 1) {
             clearInterval(myInterval);
             console.log("Order delivered!");
             console.log("Shipper is picking up your order");
@@ -29,4 +29,4 @@ export async function trackLiveDeliveryd(){
     }, 1000);
 }
 
-trackLiveDeliveryd();
+trackLiveDelivery();

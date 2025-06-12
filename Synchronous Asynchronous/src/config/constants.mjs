@@ -1,0 +1,1 @@
+export const END_POINT = "https://68400b015b39a8039a5696b6.mockapi.io/api/restaurant";

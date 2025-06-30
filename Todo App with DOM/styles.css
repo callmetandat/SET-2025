@@ -1,0 +1,95 @@
+body {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:'Courier New', Courier, monospace;
+}
+.todo {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.56);
+    width: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 20px;
+    padding-bottom: 40px;
+}
+
+form {
+    margin: 0px;
+    padding: 0px;
+}
+
+input {
+    margin: 0px;
+    padding: 5px;
+}
+
+#todo__input-group {
+    width: 30%;
+    background-color:antiquewhite;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#task-form {
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    width: 150%;
+}
+
+#task-input {
+    width: 63%;
+    margin-bottom: 10px;
+}
+
+input {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+select {
+    margin-right: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.task-item {
+    margin-top: 20px;
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-left: 8px solid whitesmoke;
+}
+
+.task-item--pending {
+    border-left: 8px solid red;
+}
+
+.task-item--completed {
+    border-left: 8px solid green;
+}
+
+.task-item--in-progress {
+    border-left: 8px solid orange;
+}
+
+.task-item span {
+    margin-right: 50px;
+}
+
+.todo__button {
+    background-color: rgb(180, 114, 250);
+    color: white;
+}
+
+.todo__button--edit {
+    margin-right: 10px;
+    margin-left: 10px;
+}

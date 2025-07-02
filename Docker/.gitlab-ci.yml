@@ -1,0 +1,26 @@
+stages:
+  - deploy
+
+variables:
+  CONTAINER_NAME: my-node-app
+  IMAGE_NAME: my-node-app:latest
+  PORT: 3000
+
+deploy:
+  stage: deploy
+  script:
+    - echo "🛠 Building Docker image..."
+    - docker build -t $IMAGE_NAME .
+    
+    - echo "🧹 Cleaning old container (if any)..."
+    - docker stop $CONTAINER_NAME || true
+    - docker rm $CONTAINER_NAME || true
+
+    - echo "🚀 Running new container..."
+    - docker run -d --name $CONTAINER_NAME -p $PORT:$PORT $IMAGE_NAME
+
+    - echo "✅ Deployed successfully on VPS!"
+  only:
+    - main
+  tags:
+    - vps-runner

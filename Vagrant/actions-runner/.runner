@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 21,
+  "agentName": "MSI",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus15.actions.githubusercontent.com/KaSXaX9wBbd4BbO7UTZYMwi90a6zOUtRK2eb3VEesYnqi4dtlT/",
+  "gitHubUrl": "https://github.com/callmetandat/SET-2025",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}

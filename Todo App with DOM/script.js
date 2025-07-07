@@ -36,6 +36,20 @@ function createStateSelect(currentStatus="To-do") {
     return select;
 }
 
+function createAllCompletedTasksDeleteButton() {
+    const deleteButton = createDeleteButton();
+    deleteButton.textContent = "DELETE COMPLETED TASKS";
+    return deleteButton
+}
+
+function handleDeleteAllCompletedTasksButton(deleteButton) {
+    deleteButton.addEventListener("click", () => {
+        const listTasks = document.querySelectorAll("div.task-item--completed");
+        console.log(listTasks);
+        listTasks.forEach(task => task.remove());
+    });
+}
+
 function handleDeleteButton(deleteButton) {
     deleteButton.addEventListener("click", () => {
         const task = deleteButton.parentElement;
@@ -128,13 +142,16 @@ window.onload = function() {
             alert("Please enter a task!");
             return;
         }
-
+        
         renderTask(taskList, taskName, "In-progress");
-
+        
         // Save task into localStorage
-        taskOject[taskName] = 
-
+        //taskOject[taskName] = 
+        
         // Append container to list
         input.value = ""; // Reset input
     });
+    const deleteCompletedTasksButton = createAllCompletedTasksDeleteButton();
+    taskList.appendChild(deleteCompletedTasksButton);
+    handleDeleteAllCompletedTasksButton(deleteCompletedTasksButton);
 };

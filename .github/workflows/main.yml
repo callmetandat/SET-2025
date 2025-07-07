@@ -2,7 +2,7 @@ name: CI/CD with Docker on VPS
 
 on:
   push:
-    branches: [main]
+    branches: [Docker]
 
 jobs:
   deploy:
@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Pull image from Docker Hub
-        run: docker pull callmetandat/set-2025-app:latest
+        run: docker pull tandat1508/set-2025-app:latest
 
       - name: Stop & remove old container
         run: |
@@ -22,4 +22,4 @@ jobs:
           docker run -d \
             --name docker-ci-cd \
             -p 3000:3000 \
-            callmetandat/set-2025-app:latest
+            tandat1508/set-2025-app:latest

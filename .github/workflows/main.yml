@@ -1,0 +1,25 @@
+name: CI/CD with Docker on VPS
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull image from Docker Hub
+        run: docker pull callmetandat/set-2025-app:latest
+
+      - name: Stop & remove old container
+        run: |
+          docker stop docker-ci-cd || true
+          docker rm docker-ci-cd || true
+
+      - name: Run new container
+        run: |
+          docker run -d \
+            --name docker-ci-cd \
+            -p 3000:3000 \
+            callmetandat/set-2025-app:latest

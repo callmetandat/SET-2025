@@ -36,12 +36,6 @@ function createStateSelect(currentStatus="To-do") {
     return select;
 }
 
-function createAllCompletedTasksDeleteButton() {
-    const deleteButton = createDeleteButton();
-    deleteButton.textContent = "DELETE COMPLETED TASKS";
-    return deleteButton
-}
-
 function handleDeleteAllCompletedTasksButton(deleteButton) {
     deleteButton.addEventListener("click", () => {
         const listTasks = document.querySelectorAll("div.task-item--completed");
@@ -54,6 +48,7 @@ function handleDeleteButton(deleteButton) {
     deleteButton.addEventListener("click", () => {
         const task = deleteButton.parentElement;
         task.remove();
+        deleteTask(task.id);
     });
 }
 
@@ -95,7 +90,8 @@ function handleStatusSelect(statusSelect) {
 }
 
 function renderTask(taskList, taskName, status="to-do") {
-    const taskContainer = createContainer(`${Date.now()}`);
+    const id = Date.now();
+    const taskContainer = createContainer(id);
     const taskSpan = document.createElement("span");
     taskSpan.textContent = taskName;
 
@@ -114,15 +110,23 @@ function renderTask(taskList, taskName, status="to-do") {
     taskContainer.appendChild(editButton);
     taskContainer.appendChild(deleteButton);
     taskList.appendChild(taskContainer);
+    saveTask(id, taskName, status);
 }
 
-function savedTask(id, taskName, status="to-do") {
-    taskObject[id] = id;
-    taskObject[taskName] = taskName;
-    taskObject[status] = status;
+function saveTask(id, taskName, status="to-do") {
+    let taskList = JSON.parse(localStorage.getItem("taskList")) || [];
+    const newTask = {"id": id, "taskName": taskName, "status": status};
+    taskList.push(newTask);
+    localStorage.setItem("taskList", JSON.stringify(taskList));
 }
 
-let taskObject = {};
+function deleteTask(id) {
+    let taskList = JSON.parse(localStorage.getItem("taskList")) || [];
+    console.log(taskList);
+    const updatedList = taskList.filter(task => String(task.id) !== String(id));
+    console.log(updatedList);
+    localStorage.setItem("taskList", JSON.stringify(updatedList));
+}
 
 window.onload = function() {
     const addTaskButton = document.getElementById("add-task-button");
@@ -143,15 +147,12 @@ window.onload = function() {
             return;
         }
         
-        renderTask(taskList, taskName, "In-progress");
-        
-        // Save task into localStorage
-        //taskOject[taskName] = 
+        renderTask(taskList, taskName, "To-do");
         
         // Append container to list
         input.value = ""; // Reset input
     });
-    const deleteCompletedTasksButton = createAllCompletedTasksDeleteButton();
-    taskList.appendChild(deleteCompletedTasksButton);
+
+    const deleteCompletedTasksButton = document.getElementById("delete-completed-tasks-button");
     handleDeleteAllCompletedTasksButton(deleteCompletedTasksButton);
 };

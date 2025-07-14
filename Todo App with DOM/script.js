@@ -40,7 +40,10 @@ function handleDeleteAllCompletedTasksButton(deleteButton) {
     deleteButton.addEventListener("click", () => {
         const listTasks = document.querySelectorAll("div.task-item--completed");
         console.log(listTasks);
-        listTasks.forEach(task => task.remove());
+        listTasks.forEach(task => { 
+            task.remove();
+            deleteTask(task.id);
+        });
     });
 }
 
@@ -73,6 +76,7 @@ function handleEditButton(editButton) {
             }
             const newTask = document.createElement("span");
             newTask.textContent = newTaskName;
+            updateTask(task.id, newTaskName, null);
             task.replaceChild(newTask, inputTask);
             editButton.textContent = "EDIT";
         }
@@ -84,13 +88,13 @@ function handleStatusSelect(statusSelect) {
         const task = statusSelect.parentElement;
         let option = statusSelect.options[statusSelect.selectedIndex].text;
         option = option.charAt(0).toLowerCase() + option.slice(1);
-        task.classList.remove("task-item--pending", "task-item--completed", "task-item--in-progress");
+        task.classList.remove("task-item--to-do" ,"task-item--pending", "task-item--completed", "task-item--in-progress");
         task.className += ` task-item--${option}`;
+        updateTask(task.id, null, option);
     })
 }
 
-function renderTask(taskList, taskName, status="to-do") {
-    const id = Date.now();
+function renderTask(taskList, id, taskName, status) {
     const taskContainer = createContainer(id);
     const taskSpan = document.createElement("span");
     taskSpan.textContent = taskName;
@@ -101,7 +105,7 @@ function renderTask(taskList, taskName, status="to-do") {
     const deleteButton = createDeleteButton();
     handleDeleteButton(deleteButton);
 
-    const statusSelect = createStateSelect(status);
+    const statusSelect = createStateSelect(status.charAt(0).toUpperCase() + status.slice(1));
     handleStatusSelect(statusSelect);
 
     taskContainer.classList.add(`task-item--${status.charAt(0).toLowerCase() + status.slice(1)}`);
@@ -110,11 +114,27 @@ function renderTask(taskList, taskName, status="to-do") {
     taskContainer.appendChild(editButton);
     taskContainer.appendChild(deleteButton);
     taskList.appendChild(taskContainer);
-    saveTask(id, taskName, status);
 }
 
-function saveTask(id, taskName, status="to-do") {
+function updateTask(id, taskName, status) {
     let taskList = JSON.parse(localStorage.getItem("taskList")) || [];
+    const newTask = {"id": id, "taskName": taskName, "status": status};
+    const index = taskList.findIndex(task => task.id === id);
+    if (index !== -1) {
+        if (taskName !== null && taskName !== "") {
+            taskList[index].taskName = taskName;
+        }
+        if (status !== null & status !== "") {
+            taskList[index].status = status;
+        }
+    }
+    localStorage.setItem("taskList", JSON.stringify(taskList));
+}
+
+function createTask(taskDiv, taskName, status) {
+    let taskList = JSON.parse(localStorage.getItem("taskList")) || [];
+    const id = String(Date.now());
+    renderTask(taskDiv, id, taskName, status);
     const newTask = {"id": id, "taskName": taskName, "status": status};
     taskList.push(newTask);
     localStorage.setItem("taskList", JSON.stringify(taskList));
@@ -122,19 +142,27 @@ function saveTask(id, taskName, status="to-do") {
 
 function deleteTask(id) {
     let taskList = JSON.parse(localStorage.getItem("taskList")) || [];
-    console.log(taskList);
     const updatedList = taskList.filter(task => String(task.id) !== String(id));
-    console.log(updatedList);
     localStorage.setItem("taskList", JSON.stringify(updatedList));
+}
+
+function loadTask(taskDiv) {
+    let taskList = JSON.parse(localStorage.getItem("taskList")) || [];
+    if (taskList.length !== 0) {
+        taskList.forEach(task => {
+            renderTask(taskDiv, task.id, task.taskName, task.status);
+        });
+    }
 }
 
 window.onload = function() {
     const addTaskButton = document.getElementById("add-task-button");
     const taskForm = document.getElementById("task-form");
     const taskList = document.getElementById("task-list");
+    taskList.replaceChildren();
 
     // Load tasks from localStorage
-    // Render tasks
+    loadTask(taskList);
 
     taskForm.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -147,7 +175,7 @@ window.onload = function() {
             return;
         }
         
-        renderTask(taskList, taskName, "To-do");
+        createTask(taskList, taskName, "to-do");
         
         // Append container to list
         input.value = ""; // Reset input
